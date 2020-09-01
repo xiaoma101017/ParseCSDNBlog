@@ -56,6 +56,7 @@ def getBlogList(blogID, pages):
     return hrefs
 
 def parseData():
+    results.sort(key=lambda result:int(result[2]), reverse=True) # 按浏览量排序
     dataframe = pd.DataFrame(data=results)
     dataframe.columns = ['文章标题', '文章链接', '浏览量', '收藏量', '发布时间']
     dataframe.to_csv(OUTPUT, index=False, sep=',')
